@@ -23,10 +23,11 @@ public:
             // multiplying with 3 again returns the orginal number for that 
             // so 3*(row/3) only gives values in starting point for the 3x3 matrix ex. 0 3 6 
             // then i/3 will be used to keep going 0 1 2  over the rows
+            //output will be 000 111 222 // used to check 3 times over that columns
             // EXPLAINATION FOR COLUMN
             //(3*(col/3)) ==> already explained above but here this will return the starting poistion for the curerent column 
 //             which would be again any one of 0 3 6
-            // i%3 is used after wards givs ans like 0 1 2 (same as of /3 but no sure why it s used here) [it was used in the video]
+            // i%3 is used after wards givs ans like 1 2 0 (Notice the differece that is is 1 2 0 iterations // outputs for i%3 will be 012 012 012 
             //col  [3*(col/3) + i%3] 
             // ex. [(3* 7/3  )+0/3 ] =6;
         }
