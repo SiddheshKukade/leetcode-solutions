@@ -13,7 +13,7 @@ class Solution:
                 d1[s1[i]] = s2[i]
                 d2[s2[i]] = s1[i]
 
-            if d1 == d2 and len(d1) <=2:
-                return True
-            else:
-                return False
+        if d1 == d2 and len(d1) <=2:
+            return True
+        else:
+            return False
