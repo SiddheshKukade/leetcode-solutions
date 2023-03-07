@@ -21,7 +21,7 @@ public:
 class Solution {
 public:
     void fnc(Node* root, vector<int>&ans){
-     ans.push_back(root-val);
+     ans.push_back(root->val);
 
      for(int i =0; i<root->children.size();i++){
          fnc(root->children[i], ans); // on repeat the process for non null values
