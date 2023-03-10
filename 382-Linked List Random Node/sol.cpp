@@ -25,7 +25,7 @@ ListNode* headNode;
     }
 
     int getRandom() {
-       int nand_index= rand()%len; // rand no until our size
+       int rand_index= rand()%len; // rand no until our size
        ListNode* temp = headNode;
        for(int i=0;i<rand_index;i++){ // trace until that index
            temp = temp->next;
