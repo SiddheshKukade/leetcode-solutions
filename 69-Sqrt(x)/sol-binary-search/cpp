@@ -1,0 +1,27 @@
+class Solution {
+public:
+    int mySqrt(int x) {
+    // using linrar search
+    //    long long  y =0;
+    // //    TIME O(under root of x)
+    // // SPACE O(1)
+    //    while(y*y <=  x){
+    //        y++;
+    //    } 
+    //    return y-1;
+    // using binary serach 
+    long long s=0, e=x,ans=0;
+    while(s<=e){ //while start reaches end
+        long long m = s+(e-s)/2; /// calc the mid // we have done s+ (e-s)/2 to avoid int overflow
+        cout<<x<<m;
+        // if(m*m==x) return m;
+        if(m*m <=x) { // if simmilar of less than 
+            ans= m; // store ans 
+            s=m+1; // keep moving forward
+        }else{
+            e=m-1; // if ans is larger then keep searching backwards
+        }
+    }
+    return ans;
+    }
+};
