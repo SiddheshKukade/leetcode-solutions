@@ -19,13 +19,16 @@ class Solution {
         queue.offer(root);
         while(!queue.isEmpty()){
             root = queue.poll(); //prints the head and deletes the head.
-            if(root.right != null){
+            if(root.right != null){ // firsly traversing all the right ele
                 queue.offer(root.right);
             }
-            if(root.left != null){
+            if(root.left != null){  // now traversing left elements 
                 queue.offer(root.left);
             }
         }
+        /// after following this left and right methods in the end we will have the 
+        /// left nodes in the end and the leftest is at the end of the queue 
+        // / so it's the answer in the end
     return root.val;
     }
 }
