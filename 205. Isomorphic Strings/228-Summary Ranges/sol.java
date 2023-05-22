@@ -1,0 +1,16 @@
+class Solution {
+    public List<String> summaryRanges(int[] nums) {
+        List<String> list = new ArrayList();
+        int n = nums.length();
+        for(int i=0; i<n;i++){
+            int start = nums[i];
+            while(i+1<n && nums[i+1] == nums[i] +1) // moving untll the range exists
+                i++; // we've moved i to the last range supported ele
+            if(start != nums[i])
+                list.add(""+start+"->"+ nums[i]); 
+            else
+                list.add(""+nums[i]);
+        }
+        return list;
+    }
+}
