@@ -1,0 +1,11 @@
+class Solution {
+public:
+    bool isPerfectSquare(int num) {
+      unsigned int n =1;
+
+   while(n*n<num){ n++;
+   }
+      return (n*n == num);  
+    }
+
+};
