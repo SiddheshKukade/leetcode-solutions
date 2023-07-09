@@ -4,8 +4,7 @@
 class Solution:
     def kthSmallest(self,arr, l, r, k):
         arr.sort()
-        for i in arr:
-            return arr[k-1]
+        return arr[k-1]
 
 #{ 
  # Driver Code Starts
