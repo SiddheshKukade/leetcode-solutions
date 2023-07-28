@@ -5,6 +5,8 @@ using namespace std;
 // } Driver Code Ends
 class Solution {
 private:
+///TC O ( n*m ) 
+//SC O (n*m)
     void dfs(int row, int col, vector<vector<int>> &ans, vector<vector<int>> 
     &image, int newColor, int delRow[], int delCol[], int iniColor)
     {
