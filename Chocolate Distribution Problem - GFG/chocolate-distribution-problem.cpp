@@ -7,18 +7,19 @@ class Solution{
     public:
     long long findMinDiff(vector<long long> a, long long n, long long m){
     //code
-    sort(a.begin(), a.end());
-    int i=0; int j= i+m-1;
-    long long ans = INT_MAX;
+       long long i=0,j=m-1 ;
+    long long d=0,md=INT_MAX ;
+    sort(a.begin(),a.end()) ;
     while(j<n)
-{
-    ans = min(a[j]-a[i], ans);
-    i++; j++;
-}
-
-        return ans;
+    {
+        d = a[j] - a[i] ;
+        md = min(d,md) ;
+        i++;
+        j++ ;
+    }
+    return md ;    
+    
     }   
-
 };
 
 //{ Driver Code Starts.
