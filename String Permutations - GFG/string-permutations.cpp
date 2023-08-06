@@ -12,7 +12,7 @@ class Solution{
             return;
         }
         for(int i= ind; i< s.length(); i++){
-            swap(s[i], s[ind]); // swap each element with other 
+            swap(s[i], s[ind]); // swap each element once with index and call func
             sol(s,ans,ind+1);
             swap(s[i], s[ind]); // make it original again
         }
