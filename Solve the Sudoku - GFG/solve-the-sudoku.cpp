@@ -10,78 +10,44 @@ using namespace std;
 
 
 // } Driver Code Ends
-class Solution 
-{
-    public:
+
+class Solution {
+public:
     //Function to find a solved Sudoku. 
-    bool SolveSudoku(int grid[N][N]) {
-        int row, col;
-        // If there are no unassigned cells, Sudoku is solved.
-        if (!FindUnassignedLocation(grid, row, col))
-            return true;
-
-        // Try numbers 1 to 9 for the unassigned cell.
-        for (int num = 1; num <= 9; num++) {
-            // If the number is safe to place at the current location.
-            if (isSafe(grid, row, col, num)) {
-                // Assign the number to the current cell.
-                grid[row][col] = num;
-
-                // Recursively solve the rest of the Sudoku.
-                if (SolveSudoku(grid))
-                    return true;
-
-                // If the current assignment does not lead to a solution,
-                // revert the assignment and try the next number.
-                grid[row][col] = 0;
-            }
-        }
-
-        // If no number can be placed in the current cell,
-        // return false to backtrack.
-        return false;
-    }
-
-    //Function to print grids of the Sudoku.
-    void printGrid(int grid[N][N]) {
-        for (int i = 0; i < N; i++) {
-            for (int j = 0; j < N; j++) {
-                std::cout << grid[i][j] << " ";
-            }
-        }
-    }
-
-private:
-    // Function to find an unassigned location in the grid.
-    bool FindUnassignedLocation(int grid[N][N], int& row, int& col) {
-        for (row = 0; row < N; row++) {
-            for (col = 0; col < N; col++) {
-                if (grid[row][col] == 0)
-                    return true;
-            }
-        }
-        return false;
-    }
-
-    // Function to check if it's safe to place a number in a cell.
-    bool isSafe(int grid[N][N], int row, int col, int num) {
-        // Check if the number is not present in the current row and column.
-        for (int i = 0; i < N; i++) {
-            if (grid[row][i] == num || grid[i][col] == num)
-                return false;
-        }
-
-        // Check if the number is not present in the 3x3 sub-grid.
-        int subGridRow = row - row % 3;
-        int subGridCol = col - col % 3;
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                if (grid[i + subGridRow][j + subGridCol] == num)
+    bool SolveSudoku(int grid[N][N]) { 
+        for(int i=0; i<N; i++) {
+            for(int j=0; j<N; j++) {
+                if(grid[i][j] == 0) {
+                    for(char c=1; c<=9; c++) {
+                        if(isValid(grid, i, j, c)) {
+                            grid[i][j] = c;
+                            if(SolveSudoku(grid) == true) return true;
+                            else grid[i][j] = 0;
+                        }
+                    }
                     return false;
+                }
             }
         }
-
         return true;
+    }
+    
+    bool isValid(int grid[N][N], int row, int col, char c) {
+        for(int i=0; i<9; i++) {
+            if(grid[i][col] == c) return false;
+            if(grid[row][i] == c) return false;
+            if(grid[3*(row/3)+(i/3)][3*(col/3)+(i%3)] == c) return false;
+        }
+        return true;
+    }
+    
+    //Function to print grids of the Sudoku.
+    void printGrid (int grid[N][N]) {
+        for(int i=0; i<N; i++) {
+            for(int j=0; j<N; j++) {
+                std::cout<< grid[i][j] << " ";
+            }
+        }
     }
 };
 
