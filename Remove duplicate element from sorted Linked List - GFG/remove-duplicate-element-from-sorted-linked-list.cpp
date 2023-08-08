@@ -80,7 +80,10 @@ Node *removeDuplicates(Node *head)
         prev= prev->next;
   }else{
       prev->next = head->next;
+        //removing from memory
+        Node* rem = head;
       head= head->next;
+      free(rem);
   }
 }
  
