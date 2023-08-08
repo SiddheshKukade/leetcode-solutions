@@ -48,56 +48,44 @@ void printList(struct node *node)
 
 class Solution
 {
-public:
-    pair<struct node *, struct node *> reverseGroup(struct node *prevHead, struct node *head, struct node *tail)
-    {
-        struct node *curr = head, *next, *prev = NULL, *tailNext = tail->next;
-        while (curr != tail)
-        {
-            next = curr->next;
-            curr->next = prev;
-            prev = curr;
-            curr = next;
+    public:
+    struct node *reverse (struct node *head, int k)
+    { 
+        // Complete this method
+        node *next;
+        node* prev = NULL;
+        int c=0;
+        node *cur = head;
+        
+        while(cur != NULL && c < k ){
+            next = cur->next;
+            cur->next = prev;
+            prev = cur;
+            cur = next;
+            
+            c++;
         }
-        if (curr == tail)
-        {
-            next = curr->next;
-            curr->next = prev;
-            prev = curr;
-            curr = next;
-        }
-        head->next = tailNext;
-        if (prevHead)
-            prevHead->next = tail;
-        return {tail, head};
-    }
-
-    // including head
-    struct node *kthPosition(struct node *head, int k)
-    {
-        int cnt = 1;
-        while (head->next != NULL && cnt < k)
-        {
-            head = head->next;
-            cnt++;
-        }
-        return head;
-    }
-
-    struct node *reverse(struct node *head, int k)
-    {
-        struct node *curr = head, *prev = NULL, *next, *res = NULL;
-        pair<struct node *, struct node *> temp;
-        do
-        {
-            next = kthPosition(curr, k);
-            temp = reverseGroup(prev, curr, next);
-            prev = temp.second;
-            curr = prev->next;
-            if (res == NULL)
-                res = temp.first;
-        } while (prev->next);
-        return res;
+        
+        if(next != NULL)
+            head->next = reverse(next, k);
+            
+        return prev;
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
     }
 };
 
