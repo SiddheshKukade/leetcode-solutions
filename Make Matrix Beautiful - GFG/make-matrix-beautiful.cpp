@@ -24,7 +24,8 @@ class Solution
                 col += matrix[j][i];
             } // getting the total of curr row and col
             need = max({need, row ,col}); // getting the max of currmax, currrow, and currcol
-            rows[i] = col; /// storing the values[i] as rows
+            rows[i] = row; /// storing the values[i] as rows
+            ///we can also do rows[i] = col it does not matter.
         }
         int ans =0;
         for(auto row: rows){
