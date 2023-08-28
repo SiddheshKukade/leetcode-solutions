@@ -69,24 +69,22 @@ struct Node {
 Node *removeDuplicates(Node *head)
 {
  // your code goes here
- Node* h = head;
- Node* prev;
- prev = head;
- head = head->next;
+/// 1->2->3->3->4
+// your code goes here
+ set<int> se;
  
- while(head != NULL)
- { if(head->data  != prev->data){
-        head = head->next;
-        prev= prev->next;
-  }else{
-      prev->next = head->next;
-        //removing from memory
-        Node* rem = head;
-      head= head->next;
-      free(rem);
-  }
-}
+ Node *temp= head;
+ while(temp!= nullptr){
+     se.insert(temp->data);
+     temp= temp->next;
+ }
+ vector<int> vec(se.begin(),se.end());
+ Node *ans= new Node(vec[0]);
+ Node *temp2=ans;
+ for(int i=1;i<vec.size();i++){
+     temp2->next=new Node(vec[i]);
+     temp2= temp2->next;
+ }
+ return ans;
  
- 
- return h;
 }
