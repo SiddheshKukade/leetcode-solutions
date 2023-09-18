@@ -28,7 +28,7 @@ public:
         */
         val2 = val2 /  val1; // x + y
         long long x =  (val1 + val2)  /2 ;
-        long long y = x - val1;
+        long long y =val2 -x;
         return {(int)x, (int)y};
     }
 };
