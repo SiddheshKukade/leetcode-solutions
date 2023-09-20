@@ -10,8 +10,9 @@ public:
 
 	// Function to find maximum product subarray
 	long long maxProduct(vector<int> arr, int n) {
-   // code here
-       
+	    // code here
+	
+	     
        long prefix = 1 ;
        long suffix = 1;
        long maxprod =arr[0];
