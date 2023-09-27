@@ -8,33 +8,28 @@ using namespace std;
 
 class Solution {
   public:
+   int beauty(vector<int> &alpha){ // find the max min occurennes and return the result.
+        int mf = -1;
+        int lf = 1e9;
+        for(int i=0; i<26; i++){
+            mf = max(mf, alpha[i]);
+            if(alpha[i] >= 1){
+                lf = min(lf, alpha[i]);
+            } 
+        }
+        return mf - lf;
+    }
     int beautySum(string s) {
-        // Your code goes here4
-              // Your code goes here
-        int ans = 0;
-        
-        for(int i = 0; i<s.length();i++)
-        {
-            int arr[26] = {0};
-            for(int j = i; j<s.length(); j++){
-            
-                arr[s[j]-'a']++;
-                int maxi = 0 , mini = INT_MAX; 
-                for(int k = 0; k<26; k++){
-                
-                    if(arr[k] > 0){
-                        
-                        maxi = max(maxi , arr[k]);
-                        mini = min(mini , arr[k]);
-                            
-                    }
-                }   
-        
-                ans += (maxi - mini);
+        // Your code goes here
+                int res= 0 ;
+        for(int i=0; i< s.size(); i++){
+            vector<int> alpha(26,0);
+            for(int j=i; j<s.size(); j++){
+                alpha[s[j]-'a']++;
+                res = res + beauty(alpha); 
             }
         }
-        
-        return ans;
+        return res;
     }
 };
 
