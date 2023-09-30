@@ -5,24 +5,24 @@
 
 <p><span style="font-size:18px"><strong>Example 1:</strong></span></p>
 
-<pre><span style="font-size:18px"><strong>Input:
+<pre style="position: relative;"><span style="font-size:18px"><strong>Input:
 </strong>N = 5
 value[]  = {3,5,2,4,1}
 <strong>Output: </strong>1 2 3 4 5<strong>
 Explanation: </strong>After sorting the given
 linked list, the resultant matrix
 will be 1-&gt;2-&gt;3-&gt;4-&gt;5.</span>
-</pre>
+<div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre>
 
 <p><span style="font-size:18px"><strong>Example 2:</strong></span></p>
 
-<pre><span style="font-size:18px"><strong>Input:
+<pre style="position: relative;"><span style="font-size:18px"><strong>Input:
 </strong>N = 3
 value[]  = {9,15,0}
 <strong>Output: </strong>0 9 15<strong>
 Explanation: </strong>After sorting the given
 linked list , resultant will be
-0-&gt;9-&gt;15.</span></pre>
+0-&gt;9-&gt;15.</span><div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre>
 
 <p><span style="font-size:18px"><strong>Your Task:</strong><br>
 <strong>For C++ and Python:</strong> The task is to complete the function <strong>mergeSort</strong>() which sort the linked list using merge sort function.<br>
