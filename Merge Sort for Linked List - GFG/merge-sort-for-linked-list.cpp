@@ -28,71 +28,59 @@ struct Node
 
 class Solution{
   public:
-  Node* merge(Node* left, Node* right){
-      
-      if(left == NULL) {
-          return right;
-      }else if(right == NULL){
-          return left;
-      }
-      Node* ans = new Node(-1);
-      Node* temp = ans;
-      while(left != NULL && right != NULL){
-          if(left->data < right->data){
-              temp->next=  left;
-              temp= left;
-              left= left->next;
-          }else{
-              temp->next= right;
-              temp = right;
-              right = right->next;
-          }
-      }
-      
-      while(left != NULL){
-             temp->next=  left;
-              temp= left;
-              left= left->next;
-      }
-      while(right != NULL){
-             temp->next=  right;
-              temp= right;
-              right= right->next;
-      }
-      
-      /////removing the initial dummy node
-      ans = ans->next;
-      return ans;
-  }
-   Node* findMid(Node* head){
-       Node* slow = head;
-       Node* fast= head->next;
-       while(fast != NULL && fast->next != NULL){
-           slow = slow->next;
-           fast= fast->next->next;
-       }
-       return slow;
-   }
     //Function to sort the given linked list using Merge Sort.
     Node* mergeSort(Node* head) {
-        // your code here+
-        // TC O N*LOGN
-        if(head == NULL || head->next == NULL){
+        // your code here
+           if (head == nullptr || head->next == nullptr) {
             return head;
         }
-        
-        Node* mid = findMid(head);
-        
+
+        Node* mid = findMiddle(head);
         Node* left = head;
         Node* right = mid->next;
-        mid->next = NULL;
-        
-        ///sorting recursively.
+        mid->next = nullptr;
+
         left = mergeSort(left);
         right = mergeSort(right);
-        
-        ///merge both l and r half
-        Node* result = merge(left, right);
+
+        return merge(left, right);
+    }
+    private:
+    Node* findMiddle(Node* head) {
+        Node* slow = head;
+        Node* fast = head;
+
+        while (fast->next != nullptr && fast->next->next != nullptr) {
+            slow = slow->next;
+            fast = fast->next->next;
+        }
+
+        return slow;
+    }
+
+    Node* merge(Node* p1, Node* p2) {
+        Node* dummy = new Node(0);
+        Node* current = dummy;
+
+        while (p1 != nullptr && p2 != nullptr) {
+            if (p1->data < p2->data) {
+                current->next = p1;
+                p1 = p1->next;
+            } else {
+                current->next = p2;
+                p2 = p2->next;
+            }
+            current = current->next;
+        }
+
+        if (p1 != nullptr) {
+            current->next = p1;
+        } else {
+            current->next = p2;
+        }
+
+        Node* result = dummy->next;
+        delete dummy;
         return result;
     }
 };
