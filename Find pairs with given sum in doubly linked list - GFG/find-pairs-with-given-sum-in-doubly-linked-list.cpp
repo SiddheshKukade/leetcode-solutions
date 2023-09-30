@@ -35,31 +35,37 @@ class Solution
 public:
     vector<pair<int, int>> findPairsWithGivenSum(Node *head, int target)
     {
-      vector<pair<int,int>> ans;
+        // code here
         
-        Node* low = head;
-        Node* high = head;
-        while(high -> next != NULL){
-            
-            high = high -> next;
-        }
-                while(low != high){
-            
-            int sum = low -> data + high -> data;
-            
-            if(sum == target){
-                
-                ans.push_back({low -> data, high -> data});
-            }
-            
-            if(sum < target){
-                
-                low = low -> next;
-            }
-            else high = high -> prev;
+        vector<int>arr;
+        vector<pair<int, int>>ans;
+        
+        
+        Node*temp = head;
+        while(temp!=NULL){
+            arr.push_back(temp->data);
+            temp =temp->next;
         }
         
+        int i=0;
+        int j = arr.size()-1;
+        
+        while(i<j){
+            pair<int,int> p ; 
+            if(arr[i] + arr[j] == target){
+                p.first = arr[i];
+                p.second = arr[j];
+                i++;
+                j--;
+                ans.push_back(p);
+            }
+            else if(arr[i] + arr[j] > target){
+                j--;
+            }else i++;
+        }
         return ans;
+        
+        
     }
 };
 
