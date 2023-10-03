@@ -16,7 +16,7 @@ class Solution {
                 odd++;
                 if(odd >=k){
                     count =1;
-                    while(nums[i++] % 2 == 0 ) count++;
+                    while(nums[i++] % 2 == 0 ){ count++;}
                     ans+=count;
                 }
             }else if(odd >= k){
